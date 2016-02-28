@@ -33,15 +33,15 @@ class ModPattern(Mod):
         return re_text_lst
 
     def can_utter(self, message, master):
-        self.replies = []
-        for regex, text in self.re_text_lst:
-            if regex.search(message["text"]):
-                self.replies.append((regex, text))
-        return bool(self.replies)
+        return True
 
     def utter(self, message, master):
+        replies = []
+        for regex, text in self.re_text_lst:
+            if regex.search(message["text"]):
+                replies.append((regex, text))
         return [
             (random.uniform(0, 0.2),
              text, "random", dict())
-            for _, text in self.replies
+            for _, text in replies
         ]
