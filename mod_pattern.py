@@ -41,7 +41,7 @@ class ModPattern(Mod):
             if regex.search(message["text"]):
                 replies.append((regex, text))
         return [
-            (random.uniform(0, 0.2),
+            (random.uniform(0, 0.9),
              text, "random", dict())
             for _, text in replies
         ]
